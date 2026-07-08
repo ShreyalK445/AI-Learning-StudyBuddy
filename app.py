@@ -2,7 +2,7 @@ import streamlit as st
 import google.generativeai as genai
 
 st.set_page_config(
-    page_title="Shreyal AI your StudyBuddy ", 
+    page_title="Shreyal StudyBuddy Pro", 
     page_icon="🎓",
     layout="centered"
 )
@@ -92,12 +92,12 @@ st.divider()
 topic = st.text_input("Target Study Subject / Topic", placeholder="e.g., Photosynthesis, Object-Oriented Principles...")
 
 option = st.selectbox(
-    "Strategic Learning Vector",
+    "Choose according to your learning skill",
     [
-        "Explain Concept (Foundational Theory)",
-        "Real-Life Example (Analogous Visualization)",
-        "Generate Quiz (Knowledge Evaluation Block)",
-        "Ask Anything (Custom Query Mode)"
+        "Explain Concept",
+        "Real-Life Example",
+        "Generate Quiz",
+        "Ask Anything"
     ]
 )
 
@@ -105,11 +105,11 @@ if st.button("Generate Study Module"):
     if not topic.strip():
         st.warning("Please type a topic first.")
     else:
-        if "Explain Concept" in option:
-            prompt = f"Explain the concept of '{topic}' in simple language using formal tone, clear headings, and helpful bullet points."
-        elif "Real-Life Example" in option:
+        if option == "Explain Concept":
+            prompt = f"Explain the concept of '{topic}' in simple language using clear headings and helpful bullet points."
+        elif option == "Real-Life Example":
             prompt = f"Provide a practical real-world scenario or analogy explaining how '{topic}' works simply."
-        elif "Generate Quiz" in option:
+        elif option == "Generate Quiz":
             prompt = f"Create a structured 5-question multiple choice quiz on '{topic}' with a hidden answer key at the bottom."
         else:
             prompt = topic
@@ -128,7 +128,7 @@ if st.button("Generate Study Module"):
                 st.markdown(f"""
                     <div class="notebook-panel">
                         <h3 style="margin:0; color:#fff;">Workspace Overview: {topic}</h3>
-                        <p style="margin:4px 0 0 0; color:#60a5fa; font-size:0.85rem; font-weight:600;">VECTOR: {option.split(' (')[0]}</p>
+                        <p style="margin:4px 0 0 0; color:#60a5fa; font-size:0.85rem; font-weight:600;">VECTOR: {option}</p>
                         <hr style="border: 0; border-top: 1px solid #334155; margin-top: 15px; margin-bottom: 15px;">
                     </div>
                 """, unsafe_allow_html=True)
