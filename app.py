@@ -2,7 +2,7 @@ import streamlit as st
 import google.generativeai as genai
 
 st.set_page_config(
-    page_title="Shreyal StudyBuddy Pro", 
+    page_title="Shreyal your Learning StudyBuddy ", 
     page_icon="🎓",
     layout="centered"
 )
